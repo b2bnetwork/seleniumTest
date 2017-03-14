@@ -14,8 +14,13 @@ private TFNavBar b2bJiraNavBar;
 		return b2bJiraNavBar;
 	}
 	
-	public void goToReports() throws Exception{
-		driver.get("http://gate.eccapital.pl:8080/testFactory-1.1-SNAPSHOT/#!CHOOSE_REPORT");
+	/*Module names:
+	CHOOSE_REPORT,
+	REQUIREMENTS,
+	TestManagement,
+	*/
+	public void goToModule(String moduleName) throws Exception{
+		driver.get("http://gate.eccapital.pl:8080/testFactory-1.1-SNAPSHOT/#!" + moduleName);
 	}
 
 
