@@ -26,23 +26,17 @@ public class WyszukajProdukt_Test {
 		driver.manage().window().maximize();
 		driver.get("https://www.morele.net");
 	}
-
-	
+	@Test
 	public void WyszukajItem() {
 		GlownaMoreleNet glownaStrona = PageFactory.initElements(driver, GlownaMoreleNet.class);
 		glownaStrona.wpiszSzukanyProdukt("Lenovo");
 		glownaStrona.kliknijLupe();
 		ListaWyszukanych lista = PageFactory.initElements(driver, ListaWyszukanych.class);
 
-		List<Item> znaleziono = lista.ListaZnaleznionych();
-
-		for (Item w : znaleziono) {
-			System.out.println(w.getCena() + "  " + w.getNazwa());
-		}
-
+		List<Item> znaleziono = lista.listaZnaleznionych();
+	
 		Assert.assertTrue(znaleziono.size() > 0);
 	}
-
 	@Test
 	public void WybierzItem() throws InterruptedException {
 		GlownaMoreleNet glownaStrona = PageFactory.initElements(driver, GlownaMoreleNet.class);
@@ -52,13 +46,13 @@ public class WyszukajProdukt_Test {
 		lista.DodajDoKoszyka(3);
 		
 		Thread.sleep(2000);
-		String expectedURL = "https://www.morele.net/koszyk";
+		String expectedURL = "https://www.morele.net/koszyk/";
 		String URL = driver.getCurrentUrl();
 		Assert.assertEquals(expectedURL, URL);
 	}
 
 	@After
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 }
