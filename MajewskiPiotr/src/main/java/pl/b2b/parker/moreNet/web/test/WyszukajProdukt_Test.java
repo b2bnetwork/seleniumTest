@@ -34,8 +34,9 @@ public class WyszukajProdukt_Test {
 		glownaStrona.kliknijLupe();
 		ListaWyszukanych lista = PageFactory.initElements(driver, ListaWyszukanych.class);
 
-		List<Item> znaleziono = lista.ListaZnaleznionych();
+		List<Item> znaleziono = lista.listaZnaleznionych();
 
+		//TODO sprawdzić czemu nie wyświetla sie nazwa
 		for (Item w : znaleziono) {
 			System.out.println(w.getCena() + "  " + w.getNazwa());
 		}
@@ -59,6 +60,6 @@ public class WyszukajProdukt_Test {
 
 	@After
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 }
