@@ -3,6 +3,7 @@ package pl.b2b.parker.moreNet.web.test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,12 +44,21 @@ public class WyszukajProdukt_Test {
 	}
 
 	@Test
-	public void WybierzItem() {
+	public void WybierzItem() throws InterruptedException {
 		GlownaMoreleNet glownaStrona = PageFactory.initElements(driver, GlownaMoreleNet.class);
 		glownaStrona.wpiszSzukanyProdukt("Lenovo");
 		glownaStrona.kliknijLupe();
 		ListaWyszukanych lista = PageFactory.initElements(driver, ListaWyszukanych.class);
 		lista.DodajDoKoszyka(3);
+		
+		Thread.sleep(2000);
+		String expectedURL = "https://www.morele.net/koszyk";
+		String URL = driver.getCurrentUrl();
+		Assert.assertEquals(expectedURL, URL);
 	}
 
+	@After
+	public void tearDown() {
+		//driver.quit();
+	}
 }
