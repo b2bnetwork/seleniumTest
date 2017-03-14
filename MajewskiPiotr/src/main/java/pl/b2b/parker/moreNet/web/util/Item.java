@@ -6,7 +6,7 @@ public class Item {
 	private String cena;
 
 	public Item( String nazwa, String cena) {
-		super();
+		
 		this.nazwa = nazwa;
 		this.cena = cena;
 	}

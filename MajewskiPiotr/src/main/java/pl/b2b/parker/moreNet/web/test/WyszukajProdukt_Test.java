@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -27,7 +26,7 @@ public class WyszukajProdukt_Test {
 		driver.get("https://www.morele.net");
 	}
 
-	@Test
+	
 	public void WyszukajItem() {
 		GlownaMoreleNet glownaStrona = PageFactory.initElements(driver, GlownaMoreleNet.class);
 		glownaStrona.wpiszSzukanyProdukt("Lenovo");
@@ -39,9 +38,17 @@ public class WyszukajProdukt_Test {
 		for (Item w : znaleziono) {
 			System.out.println(w.getCena() + "  " + w.getNazwa());
 		}
-		
-		Assert.assertTrue(znaleziono.size()>0);
 
+		Assert.assertTrue(znaleziono.size() > 0);
+	}
+
+	@Test
+	public void WybierzItem() {
+		GlownaMoreleNet glownaStrona = PageFactory.initElements(driver, GlownaMoreleNet.class);
+		glownaStrona.wpiszSzukanyProdukt("Lenovo");
+		glownaStrona.kliknijLupe();
+		ListaWyszukanych lista = PageFactory.initElements(driver, ListaWyszukanych.class);
+		lista.DodajDoKoszyka(3);
 	}
 
 }

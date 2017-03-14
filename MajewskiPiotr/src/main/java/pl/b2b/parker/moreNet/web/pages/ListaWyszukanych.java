@@ -19,6 +19,10 @@ public class ListaWyszukanych {
 	@FindBy(xpath = "//*[@id='content']/div/div[2]/div[3]/div[3]/div[*]")
 	List<WebElement> listaWyszukanych;
 
+	
+	@FindBy(xpath = "//*[@id='content']/div/div[2]/div[3]/div[3]/div[*]/div[2]/div[1]/div[2]/div[1]/div[2]")
+	List<WebElement> listaObiektówDodajDoKoszyka;
+
 	public ListaWyszukanych(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -35,4 +39,9 @@ public class ListaWyszukanych {
 		return listaObiektow;
 	}
 
+	public void DodajDoKoszyka(int numerZListy) {
+		
+		listaObiektówDodajDoKoszyka.get(numerZListy).click();		
+
+	}
 }
