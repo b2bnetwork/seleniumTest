@@ -11,7 +11,7 @@ public class GlownaMoreleNet {
 	@FindBy(name = "search")
 	WebElement poleSzukania;
 	
-	@FindBy(className="btn-primary btnSearch")
+	@FindBy(xpath="//*[@id='searchform']/div/div[2]/button")
 	WebElement lupa;
 
 	public GlownaMoreleNet(WebDriver driver) {
