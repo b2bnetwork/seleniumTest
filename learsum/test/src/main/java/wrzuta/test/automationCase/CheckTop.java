@@ -9,7 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import junit.framework.AssertionFailedError;
+
 import wrzuta.test.pageObjects.WrzutaHomePage;
 
 public class CheckTop {
@@ -30,23 +30,22 @@ private WebDriver webdriver;
 		wrzutaHomePage.getHeader().kliknijWTopMuzyka(); 					
 		wrzutaHomePage.getHeader().podajTytułyZTop(15);
 		
-		try {
-			Assert.assertTrue(((JavascriptExecutor)webdriver).executeScript("return document.readyState").equals("complete"));
-		} catch (AssertionError e) {
-			System.out.println("Test Failed");
-		}
+		
+		Assert.assertTrue(((JavascriptExecutor)webdriver).executeScript("return document.readyState").equals("complete"));
+		
 		
 	}
 
-//	@Test
-//	public void findMultimediaOnSite()throws Exception {
-//		
-//		WrzutaHomePage wrzutaHomePage = new WrzutaHomePage(webdriver); 		
-//				
-//		wrzutaHomePage.getHeader().wyszukaj("abcsa sd"); 					
-//		
-//	}
-//
+	@Test
+	public void findMultimediaOnSite()throws Exception {
+		
+		WrzutaHomePage wrzutaHomePage = new WrzutaHomePage(webdriver); 		
+				
+		wrzutaHomePage.getHeader().wyszukaj("abcsa sd"); 					
+		Assert.assertTrue(((JavascriptExecutor)webdriver).executeScript("return document.readyState").equals("complete"));
+	
+	}
+
 	@After
 	public void tearDown() {
 		//webdriver.quit();
