@@ -5,9 +5,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import wrzuta.test.pageObjects.WrzutaHomePage;
@@ -28,7 +27,13 @@ private WebDriver webdriver;
 		WrzutaHomePage wrzutaHomePage = new WrzutaHomePage(webdriver); 		
 				
 		wrzutaHomePage.getHeader().kliknijWTopMuzyka(); 					
-	//	wrzutaHomePage.getHeader()
+		wrzutaHomePage.getHeader().podajTytułyZTop(15);
+		
+		try {
+			Assert.assertTrue(((JavascriptExecutor)webdriver).executeScript("return document.readyState").equals("complete"));
+		} catch (Exception e) {
+			System.out.println("Test Failed");
+		}
 		
 	}
 

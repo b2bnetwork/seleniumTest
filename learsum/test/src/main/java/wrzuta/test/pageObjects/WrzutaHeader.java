@@ -48,7 +48,7 @@ public class WrzutaHeader extends lib {
 
 	public void kliknijWTopMuzyka() throws InterruptedException 
 	{
-	By query = By.xpath("html/body/div[1]/ul/li[2]/a");
+	By query = By.cssSelector(".top-bar__nav > li:nth-child(2) > a:nth-child(1)");
 	
 	
 	
@@ -59,4 +59,16 @@ public class WrzutaHeader extends lib {
     
     waitForPageToLoad( driver);}
 	
+
+
+public void podajTytułyZTop(int TopPierwszych) throws InterruptedException 
+{
+String queryPart1 = ".//*[@id='content']/div[1]/div/ul/li[";
+String queryPart2 = "]/div[2]/a";
+for(int i =1; i<=TopPierwszych;i++){
+	System.out.println(driver.findElement(By.xpath( queryPart1 + i + queryPart2)).getText());	
 }
+}
+
+}
+
