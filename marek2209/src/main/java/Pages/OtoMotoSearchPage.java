@@ -1,5 +1,10 @@
 package Pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
 public class OtoMotoSearchPage {
 	private WebDriver driver;
 	
@@ -11,7 +16,7 @@ public class OtoMotoSearchPage {
 	public String manufacturerDropdownSelectorId;
 	
 	public void chooseManufacturer(String name){
-		Select select = new Select(driver.findElement(By.xpath(manufacturerDropdownSelectorId)));
+		Select select = new Select(driver.findElement(By.id(manufacturerDropdownSelectorId)));
 		select.selectByVisibleText(name);
 	}
 	
