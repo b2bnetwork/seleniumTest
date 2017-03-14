@@ -19,10 +19,8 @@ public class TfTestCases {
 	private WebDriver driver;
 	@BeforeMethod
 	public void setUp() {
-		
 		System.setProperty("webdriver.gecko.driver", "/home/tomek/b2bnet/SELENIUM_practice/geckodriver");
 		driver = new FirefoxDriver();
-		
 	}
 	
 	@Test
@@ -42,7 +40,7 @@ public class TfTestCases {
 
 		Thread.sleep(3000);
 		TfMain tfMain = new TfMain(driver);
-		tfMain.goToReports();
+		tfMain.goToModule("CHOOSE_REPORT");
 		
 		TfReports tfReports = new TfReports(driver);
 		List<WebElement> testReportList = tfReports.getReportsList("Success");
@@ -60,7 +58,7 @@ public class TfTestCases {
 
 		Thread.sleep(3000);
 		TfMain tfMain = new TfMain(driver);
-		tfMain.goToReports();
+		tfMain.goToModule("CHOOSE_REPORT");
 		
 		TfReports tfReports = new TfReports(driver);
 		List<WebElement> testReportList = tfReports.getReportsList("Fail");
@@ -69,8 +67,7 @@ public class TfTestCases {
 		System.out.println("Znaleziono " + howManyFailed + "raportów negatywnych.");
 		
 	}
-	
-	
+		
 	private Integer howManyReports(List<WebElement> reportList){
 		Integer howMany = 0;
 		for (WebElement testReport : reportList){
