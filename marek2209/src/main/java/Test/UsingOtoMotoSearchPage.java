@@ -1,5 +1,6 @@
 package Test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +28,12 @@ public class UsingOtoMotoSearchPage {
 	public void FindManufacturer(){
 		action.goToOtoMotoUrl();
 		searchPage.chooseManufacturer("Audi");
+		
+	}
+	
+	@After
+	public void teardown(){
+		//driver.quit();
 	}
 	
 
