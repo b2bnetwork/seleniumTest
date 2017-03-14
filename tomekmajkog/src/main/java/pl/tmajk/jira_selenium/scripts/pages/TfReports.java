@@ -17,9 +17,10 @@ public class TfReports extends PageObject{
 		this.driver = driver;
 	}
 	
-	public List<WebElement> getPassedReportsList(){
+	//za parametr 'Success' lub 'Fail'
+	public List<WebElement> getReportsList(String reportStatus){
 				
-		By query = By.className("v-table-row-testReportSuccessRow");
+		By query = By.className("v-table-row-testReport" + reportStatus + "Row");
 		
 		WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(query)));
