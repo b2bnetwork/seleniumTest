@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import junit.framework.AssertionFailedError;
 import wrzuta.test.pageObjects.WrzutaHomePage;
 
 public class CheckTop {
@@ -31,7 +32,7 @@ private WebDriver webdriver;
 		
 		try {
 			Assert.assertTrue(((JavascriptExecutor)webdriver).executeScript("return document.readyState").equals("complete"));
-		} catch (Exception e) {
+		} catch (AssertionError e) {
 			System.out.println("Test Failed");
 		}
 		
